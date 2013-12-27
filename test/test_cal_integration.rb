@@ -44,4 +44,10 @@ class TestCalIntegration < MiniTest::Unit::TestCase
   	assert_equal expected_output, shell_output
   end
 
+  def test_returns_an_input_for_a_sunday
+    expected_output = `cal 01 2012`
+    shell_output = `ruby cal.rb 01 2012`
+    assert_equal expected_output, shell_output
+  end
+
 end

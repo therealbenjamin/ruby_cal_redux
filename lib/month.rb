@@ -1,6 +1,10 @@
+require 'pry'
+
 class Month
 
 	MONTH_NAMES = %w{ January February March April May June July August September October November December } 
+
+	attr_reader :month, :year  
 
 	def initialize month, year 
 		@month = month 
@@ -8,15 +12,15 @@ class Month
 	end
 
 	def zellers 
-	  m = @month
-	  y = @year
-	  if m == 1 || m == 2
-	    m += 12
-	    y = @year - 1
+	  month = @month
+	  year = @year
+	  if month == 1 || month == 2
+	    month += 12
+	    year = @year - 1
 	  end
-	  start_num = ( 1 + ( (13 * (m + 1) ) / 5) + (y % 100) + ((y % 100) / 4) + (( y / 100).floor / 4) + (5 * (y / 100).floor) ) % 7
+	  start = ( 1 + ( (13 * (month + 1) ) / 5) + (year % 100) + ((year % 100) / 4) + (( year / 100).floor / 4) + (5 * (year / 100).floor) ) % 7
 	  weekdays = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
-	  weekdays[start_num]
+	  weekdays[start]
 	end
 
 	def leap? 
@@ -32,7 +36,7 @@ class Month
 	end
 
 	def days_per_month
-    daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31]
+    daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     if @month - 1 == 1 && self.leap?
       return 29
     else
@@ -43,26 +47,41 @@ class Month
 
   def month_format 
     start = self.zellers 
-    days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',]
-    startday = days.index(start)
-
+    days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+    day_one = days.index(start)
     format = " "
-    startday.times do
+    day_one.times do
     format.prepend("   ")
     end
 
     format += (1..9).to_a.join("  ")
     format += " "
     format += (10..self.days_per_month).to_a.join(" ")
-    output = format.scan(/.{1,21}/)
-    output.each do |o|
-      o.rstrip!
+    strip =  format.scan(/.{1,21}/)
+
+
+
+    strip.each do |x|
+      x.rstrip
     end
+    		
+
+
 
     month_name = MONTH_NAMES[@month - 1]
     first_line = "#{month_name} #{@year}".center(20).rstrip
     second_line = "Su Mo Tu We Th Fr Sa"
-    output.unshift(second_line).unshift(first_line)
+    output = strip.unshift(second_line).unshift(first_line)
+
+    if output.size == 6 
+    	output.push("\n")
+    	output.push("\n")
+    	return output 
+    elsif output.size == 7
+    	output.push("\n")
+    else
+    	return output 
+    end  
     
   end
 
