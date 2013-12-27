@@ -74,15 +74,9 @@ class Month
     output = strip.unshift(second_line).unshift(first_line)
 
     if output.size == 6 
-    	output.push("\n")
-    	output.push("\n")
-    	output
+    	output.push("\n\n")
     elsif output.size == 7
     	output.push("\n")
-    	output.each do |x|
-    		x.rstrip 
-    	end
-    	output
     else
     	output
     end  
