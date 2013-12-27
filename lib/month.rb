@@ -51,7 +51,7 @@ class Month
     day_one = days.index(start)
     format = " "
     day_one.times do
-    format.prepend("   ")
+    	format.prepend("   ")
     end
 
     format += (1..9).to_a.join("  ")
