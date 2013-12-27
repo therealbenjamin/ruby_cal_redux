@@ -61,9 +61,9 @@ class Month
 
 
 
-    strip.each do |x|
-      x.rstrip
-    end
+    # strip.each do |x|
+    #   x.rstrip
+    # end
     		
 
 
@@ -76,11 +76,15 @@ class Month
     if output.size == 6 
     	output.push("\n")
     	output.push("\n")
-    	return output 
+    	output
     elsif output.size == 7
     	output.push("\n")
+    	output.each do |x|
+    		x.rstrip 
+    	end
+    	output
     else
-    	return output 
+    	output
     end  
     
   end

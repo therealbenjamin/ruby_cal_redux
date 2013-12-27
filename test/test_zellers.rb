@@ -1,42 +1,7 @@
 require './cal'
 require_relative 'helper'
 
-# class TestZellers < MiniTest::Unit::TestCase
-
-# 	def test_first_of_month
-#     first = Month.zellers("January", "2012")
-#     assert_equal(1, first)
-#   end
-
-# 	def test_leap_year
-# 	 	leap = Zellers.calculate("2", "2012")
-# 	 	assert_equal(4, leap)
-# 	end
-
-# 	def test_month_eliza_said_starts_with_sat
-# 		sat = Zellers.calculate("01", "2012")
-# 		assert_equal(1, sat) 
-# 	end
-
-#   def test_non_leap
-#     non_leap = Zellers.calculate("02", "1900")
-#     assert_equal(5, non_leap)
-#   end
-
-#   def test_leap_div
-#     leap_div = Zellers.calculate("2", "2000")
-#     assert_equal(3, leap_div)
-#   end
-
-#   def test_month_with_6_weeks
-#     six_weeks = Zellers.calculate("9", "2012")
-#     assert_equal(0, six_weeks)
-#   end
-
-# end
-
-
-class CalendarTest < MiniTest::Unit::TestCase
+class CalTest < MiniTest::Unit::TestCase
 
 
   def test_month_length_non_leap_feb
@@ -64,24 +29,24 @@ class CalendarTest < MiniTest::Unit::TestCase
     assert_equal( "Sunday", Month.new(9, 2013).zellers )
   end
 
-  def test04a_leap_year_huh_random
-    m = Month.new( 1, 1837 )
-    assert_equal(false, m.leap?)
+  def test_not_leap_year
+    year = Month.new(1, 1837)
+    assert_equal(false, year.leap?)
   end
 
-  def test04b_leap_year_huh_when_4
-    yr  = Month.new(2,2012)
-    assert_equal(true, yr.leap?)
+  def test_leap_year_2012
+    year  = Month.new(2,2012)
+    assert_equal(true, year.leap?)
   end
 
-  def test04c_leap_year_huh_when_100
-    yr  = Month.new(2,1900)
-    assert_equal(false, yr.leap?)
+  def test_leap_year_1900
+    year  = Month.new(2,1900)
+    assert_equal(false, year.leap?)
   end
 
-  def test04d_leap_year_huh_when_400
-    yr  = Month.new(2,2000)
-    assert_equal(true, yr.leap?)
+  def test_leap_year_2000
+    year  = Month.new(2,2000)
+    assert_equal(true, year.leap?)
   end
 
 end
