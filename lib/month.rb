@@ -90,12 +90,15 @@ class Month
     	output[5].rstrip!
     	output[6].rstrip!
     	output.push("\n")
-    else
+    elsif
     	output[0].rstrip!
     	output[1].rstrip!
     	output[2].rstrip!
  			output[3].rstrip! 
- 			output[4].rstrip! 
+ 			output[4].rstrip!
+ 			output[5].rstrip!
+    	output[6].rstrip!
+    	output[7].rstrip!  
     	output
     end  
     
