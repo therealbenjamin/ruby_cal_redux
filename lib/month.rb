@@ -49,56 +49,34 @@ class Month
     start = self.zellers 
     days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
     day_one = days.index(start)
-    format = " "
+    temp = " "
     day_one.times do
-    	format.prepend("   ")
+    	temp.prepend("   ")
     end
 
-    format += (1..9).to_a.join("  ")
-    format += " "
-    format += (10..self.days_per_month).to_a.join(" ")
-    strip = format.scan(/.{1,21}/)
-
-
-
-    # strip.each do |x|
-    #   x.rstrip
-    # end
-    		
-
-
-
+    temp += (1..9).to_a.join("  ")
+    temp += " "
+    temp += (10..self.days_per_month).to_a.join(" ")
+    temp = temp.scan(/.{1,21}/)
     month_name = MONTH_NAMES[@month - 1]
     first_line = "#{month_name} #{@year}".center(20)
     second_line = "Su Mo Tu We Th Fr Sa"
-    output = strip.unshift(second_line).unshift(first_line)
+    output = temp.unshift(second_line).unshift(first_line)
 
     if output.size == 6 
-    	output[0].rstrip!
-    	output[1].rstrip!
- 			output[2].rstrip! 
- 			output[3].rstrip! 
- 			output[4].rstrip! 
- 			output[5].rstrip! 
+ 			output.each do |x|
+    		x.rstrip! 
+    	end
  			output.push("\n\n")
     elsif output.size == 7
-    	output[0].rstrip!
-    	output[1].rstrip!
-    	output[2].rstrip!
-    	output[3].rstrip!
-    	output[4].rstrip!
-    	output[5].rstrip!
-    	output[6].rstrip!
+    	output.each do |x|
+    		x.rstrip! 
+    	end
     	output.push("\n")
     elsif
-    	output[0].rstrip!
-    	output[1].rstrip!
-    	output[2].rstrip!
- 			output[3].rstrip! 
- 			output[4].rstrip!
- 			output[5].rstrip!
-    	output[6].rstrip!
-    	output[7].rstrip!  
+      output.each do |x|
+    		x.rstrip! 
+    	end
     	output
     end  
     
