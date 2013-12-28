@@ -36,11 +36,11 @@ class Month
 	end
 
 	def days_per_month
-    daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     if @month - 1 == 1 && self.leap?
       return 29
     else
-      daysInMonth[@month - 1]
+      days[@month - 1]
     end
   end
 
@@ -73,12 +73,6 @@ class Month
     	output.push("\n")
     else
     	output
-    end  
-    
+    end      
   end
-
-	
-
-
-
 end
