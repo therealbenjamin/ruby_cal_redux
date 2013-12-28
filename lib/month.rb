@@ -46,10 +46,10 @@ class Month
 
 
   def month_format 
-    start = self.zellers 
     days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
-    day_one = days.index(start)
+    day_one = days.index(self.zellers)
     temp = " "
+
     day_one.times do
     	temp.prepend("   ")
     end
