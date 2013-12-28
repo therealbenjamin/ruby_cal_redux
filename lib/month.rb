@@ -57,7 +57,7 @@ class Month
     format += (1..9).to_a.join("  ")
     format += " "
     format += (10..self.days_per_month).to_a.join(" ")
-    strip =  format.scan(/.{1,21}/)
+    strip = format.scan(/.{1,21}/)
 
 
 
@@ -69,15 +69,33 @@ class Month
 
 
     month_name = MONTH_NAMES[@month - 1]
-    first_line = "#{month_name} #{@year}".center(20).rstrip
+    first_line = "#{month_name} #{@year}".center(20)
     second_line = "Su Mo Tu We Th Fr Sa"
     output = strip.unshift(second_line).unshift(first_line)
 
     if output.size == 6 
-    	output.push("\n\n")
+    	output[0].rstrip!
+    	output[1].rstrip!
+ 			output[2].rstrip! 
+ 			output[3].rstrip! 
+ 			output[4].rstrip! 
+ 			output[5].rstrip! 
+ 			output.push("\n\n")
     elsif output.size == 7
+    	output[0].rstrip!
+    	output[1].rstrip!
+    	output[2].rstrip!
+    	output[3].rstrip!
+    	output[4].rstrip!
+    	output[5].rstrip!
+    	output[6].rstrip!
     	output.push("\n")
     else
+    	output[0].rstrip!
+    	output[1].rstrip!
+    	output[2].rstrip!
+ 			output[3].rstrip! 
+ 			output[4].rstrip! 
     	output
     end  
     
