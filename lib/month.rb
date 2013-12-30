@@ -2,9 +2,8 @@ require 'pry'
 
 class Month
 
+	DAYS = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
 	MONTH_NAMES = %w{ January February March April May June July August September October November December } 
-
-	attr_reader :month, :year  
 
 	def initialize month, year 
 		@month = month 
@@ -14,12 +13,13 @@ class Month
 	def zellers 
 	  month = @month
 	  year = @year
+	  weekdays = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
+
 	  if month == 1 || month == 2
 	    month += 12
 	    year = @year - 1
 	  end
 	  start = ( 1 + ( (13 * (month + 1) ) / 5) + (year % 100) + ((year % 100) / 4) + (( year / 100).floor / 4) + (5 * (year / 100).floor) ) % 7
-	  weekdays = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
 	  weekdays[start]
 	end
 
@@ -36,11 +36,11 @@ class Month
 	end
 
 	def days_per_month
-    days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     if @month - 1 == 1 && self.leap?
-      return 29
+      29
     else
-      days[@month - 1]
+      days_in_month[@month - 1]
     end
   end
 
@@ -59,6 +59,7 @@ class Month
     temp << (10..self.days_per_month).to_a.join(" ")
     temp = temp.scan(/.{1,21}/)
     month_name = MONTH_NAMES[@month - 1]
+
     first_line = "#{month_name} #{@year}".center(20)
     second_line = "Su Mo Tu We Th Fr Sa"
     output = temp.unshift(second_line).unshift(first_line)
