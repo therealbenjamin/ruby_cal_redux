@@ -2,7 +2,6 @@ require 'pry'
 
 class Month
 
-	DAYS = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
 	MONTH_NAMES = %w{ January February March April May June July August September October November December } 
 
 	def initialize month, year 
