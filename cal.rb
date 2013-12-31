@@ -5,7 +5,7 @@ if ARGV.size == 1
 	month = 1
 	year = ARGV[0].to_i
 	cal = Year.new(month, year)
-	cal.year_format 
+	cal.print_year
 else 
 	month = ARGV[0].to_i
 	year = ARGV[1].to_i	
