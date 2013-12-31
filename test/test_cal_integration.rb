@@ -50,4 +50,16 @@ class TestCalIntegration < MiniTest::Unit::TestCase
     assert_equal expected_output, shell_output
   end
 
+  def test_random_full_year
+    expected_output = `cal 2006`
+    shell_output = `ruby cal.rb 2006`
+    assert_equal expected_output, shell_output
+  end 
+
+  def test_full_leap_year
+    expected_output = `cal 1904`
+    shell_output = `ruby cal.rb 1904`
+    assert_equal expected_output, shell_output
+  end
+
 end

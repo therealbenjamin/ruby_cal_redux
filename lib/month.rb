@@ -43,7 +43,6 @@ class Month
     end
   end
 
-
   def month_format 
     days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
     day_one = days.index(self.zellers)
