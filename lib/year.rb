@@ -3,9 +3,21 @@ require 'pry'
 
 class Year
 
-  def initialize(month,year)
+	MONTH_NAMES = %w{ January February March April May June July August September October November December } 
+
+  def initialize month,year
     @month = month
     @year = year
+  end
+
+
+	def days_per_month
+    days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    if @month - 1 == 1 && self.leap?
+      29
+    else
+      days_in_month[@month - 1]
+    end
   end
 
   def year_head 
@@ -36,23 +48,38 @@ class Year
 
 
 
+
+
   def print_year 
+
+  	puts year_head
+
   	year_array = []
   	12.times do |this|
   		temp = Month.new(this + 1, @year)
-  		year_array.push(temp.month_format)
+  		year_array.push(temp.month_year_format)
   	end
-  	puts year_head
-  	puts months_head_1
-  	puts week
-  	puts months_head_2
-  	puts week 
-  	puts months_head_3
-  	puts week 
-  	puts months_head_4
-  	puts week 
+
+
+		month_height = year_array[0].length
+  	4.times do 
+  		temp = []
+  		3.times do 
+  			temp << year_array[0]
+  			year_array.shift 
+  		end
+
+  		month_height.times do 
+  			temp.each do |temp|
+  				print temp[0]
+  				temp.shift 
+  			end 
+  			puts ""
+  		end 
+  		puts ""
+  	end
   	
-  end
+	end 
 
 
 
