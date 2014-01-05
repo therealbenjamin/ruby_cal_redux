@@ -62,8 +62,8 @@ class Month
     second_line = "Su Mo Tu We Th Fr Sa"
     output = temp.unshift(second_line).unshift(first_line)
 
-    output.each do |x|
-    	x.rstrip!
+    output.each do |this|
+    	this.rstrip!
     end
 
     if output.size == 6 
@@ -94,8 +94,8 @@ class Month
     second_line = "Su Mo Tu We Th Fr Sa"
     output = temp.unshift(second_line).unshift(first_line)
 
-    output.each do |x|
-    	x.rstrip!
+    output.each do |this|
+    	this.rstrip!
     end
 
     if output.size == 6 
