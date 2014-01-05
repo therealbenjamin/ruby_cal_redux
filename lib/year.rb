@@ -10,25 +10,27 @@ class Year
     @year = year
   end
 
-  def year_head 
+  def year_head # Create header for year entered by user.
   	year_head = "#{@year}".center(64) + "\n"
   	puts year_head 
   end
 
-  def week
+  def week # Create week header for each month. Potentially unnecessary. 
   	week = "Su Mo Tu We Th Fr Sa"
   	row = week + "  " + week + "  " + week + "\n"
   end
 
 
-  def print_year 
+  def print_year # NOT final. Need to refactor to do this programatically. 
 
+  	# Push properly formatted month arrays into an array of the year submitted by the user. 
   	year_array = []
   	12.times do |this|
   		temp = Month.new(this + 1, @year)
   		year_array.push(temp.month_year_format)
   	end
 
+  	# Set month variables for month arrays so it looks slightly less insane and confusing; set spacing. 
   	jan = year_array[0]
   	space = 20 - jan[6].length 
   	jan[6] << (" " * space)
@@ -46,7 +48,7 @@ class Year
   	apr = year_array[3]
   	space = 20 - apr[6].length 
   	apr[6] << (" " * space)
-  	space = 20 - apr[7].length unless apr[7].nil?
+  	space = 20 - apr[7].length unless apr[7].nil? 
   	apr[7] << (" " * space) unless apr[7].nil?
 
   	may = year_array[4]
@@ -84,15 +86,13 @@ class Year
   	nov[7] << (" " * space) unless nov[7].nil?
 
   	dec = year_array[11]
-  	# space = 20 - dec[6].length  
-  	# dec[6] << (" " * space)
-  	# space = 20 - dec[7].length unless dec[7].nil?
-  	# dec[7] << (" " * space) unless dec[7].nil?
+
+  	# This is where the magic should happen. There is presently no magic. Printing is line by line, year tests still borked. MUST REFACTOR!! 
 
 		puts year_head
 
-  	print "#{jan[0]}" + "         " +  "#{feb[0]}".center(20) + "  "  "#{mar[0]}" + "\n"
-  	print "#{jan[1]}  #{feb[1]}  #{mar[1]}" + "\n"
+  	print "#{jan[0]}" + "       " +  "#{feb[0]}".center(20) + "    "  "#{mar[0]}" + "\n"
+  	print week
   	print "#{jan[2]}  #{feb[2]}  #{mar[2]}" + "\n"
   	print "#{jan[3]}  #{feb[3]}  #{mar[3]}" + "\n"
   	print "#{jan[4]}  #{feb[4]}  #{mar[4]}" + "\n"
@@ -101,11 +101,9 @@ class Year
   	print "#{jan[7]}" if !jan[7].nil?  
   	print "#{feb[7]}" if !feb[7].nil?
   	print "#{mar[7]}" if !mar[7].nil?
-  	
-  	# puts 
 
   	print "#{apr[0]}" + "       " + "#{may[0]}".center(20) + " " + "#{jun[0]}".center(20) + "\n"
-  	print "#{apr[1]}  #{may[1]}  #{jun[1]}" + "\n"
+  	print week 
   	print "#{apr[2]}  #{may[2]}  #{jun[2]}" + "\n"
   	print "#{apr[3]}  #{may[3]}  #{jun[3]}" + "\n"
   	print "#{apr[4]}  #{may[4]}  #{jun[4]}" + "\n"
@@ -115,10 +113,8 @@ class Year
   	print "#{may[7]}" if !may[7].nil?
   	print "#{jun[7]}" if !jun[7].nil?
 
-  	# print 
-
   	print "#{jul[0]}" + "       " + "#{aug[0]}".center(20) + "  " + "#{sep[0]}".center(20) + "\n"
-  	print "#{jul[1]}  #{aug[1]}  #{sep[1]}" + "\n"
+  	print week 
   	print "#{jul[2]}  #{aug[2]}  #{sep[2]}" + "\n"
   	print "#{jul[3]}  #{aug[3]}  #{sep[3]}" + "\n"
   	print "#{jul[4]}  #{aug[4]}  #{sep[4]}" + "\n"
@@ -128,10 +124,8 @@ class Year
   	print "#{aug[7]}" if !aug[7].nil?
   	print "#{sep[7]}" if !sep[7].nil?
 
-  	# print  
-
-  	print "#{oct[0]}" + "      " + "#{nov[0]}".center(20) + " " + "#{dec[0]}".center(20) + "\n"
-  	print "#{oct[1]}  #{nov[1]}  #{dec[1]}" + "\n"
+  	print "#{oct[0]}" + "      " + "#{nov[0]}".center(20) + "  " + "#{dec[0]}".center(20) + "\n"
+  	print week 	
   	print "#{oct[2]}  #{nov[2]}  #{dec[2]}" + "\n"
   	print "#{oct[3]}  #{nov[3]}  #{dec[3]}" + "\n"
   	print "#{oct[4]}  #{nov[4]}  #{dec[4]}" + "\n"
@@ -141,8 +135,7 @@ class Year
   	print "#{nov[7]}" if !nov[7].nil?
   	print "#{dec[7]}" + "\n" if !dec[7].nil? 
   	
-
-
+  	# Playing with code here to clean up year print method. 
 
 		# month_height = year_array[0].length
   # 	4.times do 
