@@ -1,5 +1,4 @@
 require_relative './month'
-require 'pry' 
 
 class Year
 
@@ -134,7 +133,7 @@ class Year
   	print "#{oct[7]}" unless oct[7].nil?  
   	print "#{nov[7]}" unless nov[7].nil?
   	print "#{dec[7]}" + "\n" unless dec[7].nil? 
-  	
+
   	# Playing with code here to clean up year print method. 
 
 		# month_height = year_array[0].length
