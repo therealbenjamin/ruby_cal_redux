@@ -99,9 +99,9 @@ class Month
     end
 
     if output.size == 6 
- 			output.push("\n\n")
+ 			output
     elsif output.size == 7
-    	output.push("\n")
+    	output.push
     else
     	output
     end      
