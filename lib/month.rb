@@ -50,7 +50,7 @@ class Month
 
     day_one.times do
     	temp.prepend("   ")
-    end
+        end
 
     temp << (1..9).to_a.join("  ")
     temp << " "
