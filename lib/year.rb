@@ -7,7 +7,6 @@ class Year
   attr_reader :year   
 
   def initialize month, year
-    # @month = month
     @year = year
   end
 
@@ -30,57 +29,57 @@ class Year
     # Set variable for each month in year_array / format spacing for last 2 rows 
   	jan = year_array[0]
   	space = 20 - jan[6].length 
-  	jan[6] = jan[6] + (" " * space)
+  	jan[6] << (" " * space)
   	space = 20 - jan[7].length unless jan[7].nil?
-  	jan[7] = jan[7] + (" " * space) unless jan[7].nil?
+  	jan[7] << (" " * space) unless jan[7].nil?
 
   	feb = year_array[1]
   	space = 20 - feb[6].length 
-  	feb[6] = feb[6] + (" " * space)
+  	feb[6] << (" " * space)
   	space = 20 - feb[7].length unless feb[7].nil?
-  	feb[7] = feb[7] + (" " * space) unless feb[7].nil?
+  	feb[7] << (" " * space) unless feb[7].nil?
   	
   	mar = year_array[2]
 
   	apr = year_array[3]
   	space = 20 - apr[6].length 
-  	apr[6] = apr[6] + (" " * space)
+  	apr[6] << (" " * space)
   	space = 20 - apr[7].length unless apr[7].nil?
-  	apr[7] = apr[7] + (" " * space) unless apr[7].nil?
+  	apr[7] << (" " * space) unless apr[7].nil?
 
   	may = year_array[4]
   	space = 20 - may[6].length
-  	may[6] = may[6] + (" " * space)
+  	may[6] << (" " * space)
   	space = 20 - may[7].length unless may[7].nil?
-  	may[7] = may[7] + (" " * space) unless may[7].nil?
+  	may[7] << (" " * space) unless may[7].nil?
 
   	jun = year_array[5]
 
   	jul = year_array[6]
   	space = 20 - jul[6].length 
-  	jul[6] = jul[6] + (" " * space)
+  	jul[6] << (" " * space)
   	space = 20 - jul[7].length unless jul[7].nil?
-  	jul[7] = jul[7] + (" " * space) unless jul[7].nil?
+  	jul[7] << (" " * space) unless jul[7].nil?
 
   	aug = year_array[7]
   	space = 20 - aug[6].length 
-  	aug[6] = aug[6] + (" " * space)
+  	aug[6] << (" " * space)
   	space = 20 - aug[7].length unless aug[7].nil?
-  	aug[7] = aug[7] + (" " * space) unless aug[7].nil?
+  	aug[7] << (" " * space) unless aug[7].nil?
 
   	sep = year_array[8]
 
   	oct = year_array[9]
   	space = 20 - oct[6].length  
-  	oct[6] = oct[6] + (" " * space)
+  	oct[6] << (" " * space)
   	space = 20 - oct[7].length unless oct[7].nil?
-  	oct[7] = oct[7] + (" " * space) unless oct[7].nil?
+  	oct[7] << (" " * space) unless oct[7].nil?
 
   	nov = year_array[10]
   	space = 20 - nov[6].length  
-  	nov[6] = nov[6] + (" " * space)
+  	nov[6] << (" " * space)
   	space = 20 - nov[7].length unless nov[7].nil?
-  	nov[7] = nov[7] + (" " * space) unless nov[7].nil?
+  	nov[7] << (" " * space) unless nov[7].nil?
 
   	dec = year_array[11]
 
