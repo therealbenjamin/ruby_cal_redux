@@ -97,14 +97,7 @@ class Month
     output.each do |this|
     	this.rstrip!
     end
-
-    if output.size == 6 
- 			output
-    elsif output.size == 7
-    	output.push
-    else
-    	output
-    end      
+    output       
   end
 
 end
