@@ -129,31 +129,5 @@ class Year
   	"#{oct[5]}  #{nov[5]}  #{dec[5]}" + "\n" +
   	"#{oct[6]}  #{nov[6]}  #{dec[6]}" + "\n" +
   	"#{oct[7] || ' ' * 20}  #{nov[7] || ' ' * 20}  #{dec[7]}" + "\n"
-
-  	# Playing with code here to clean up year method. 
-
-		# month_height = year_array[0].length
-  # 	4.times do 
-  # 		temp = []
-  # 		3.times do 
-  # 			temp << year_array[0]
-  # 			year_array.shift 
-  # 		end
-
-  # 		month_height.times do 
-  # 			temp.each do |temp|
-  # 				print temp[0]
-  # 				temp.shift 
-  # 			end 
-  # 			puts ""
-  # 		end 
-  # 		puts ""
-  # 	end
-  	
 	end 
-
-
-
-
-
 end
