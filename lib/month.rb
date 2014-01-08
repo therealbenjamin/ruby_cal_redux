@@ -95,7 +95,7 @@ class Month
     output = temp.unshift(second_line).unshift(first_line)
 
     output.each do |this|
-    	this.rstrip!
+      this.rstrip!
     end
     output       
   end
