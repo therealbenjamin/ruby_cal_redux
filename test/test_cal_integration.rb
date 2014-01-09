@@ -1,5 +1,4 @@
 require_relative 'helper'
-require 'pry'
 
 class TestCalIntegration < MiniTest::Unit::TestCase
 
