@@ -41,7 +41,17 @@ class Month
     end
   end
 
-  def month_format 
+  def month_head_with_year
+    month_name = MONTH_NAMES[@month - 1]
+    print "#{month_name} #{@year}".center(20)
+  end
+
+  def month_head_without_year
+    month_name = MONTH_NAMES[@month - 1]
+    print "#{month_name}"
+  end
+
+  def month_format(with_year=false)
     days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
     day_one = days.index(self.zellers)
     temp = " "
@@ -56,7 +66,7 @@ class Month
     temp = temp.scan(/.{1,21}/)
     month_name = MONTH_NAMES[@month - 1]
 
-    first_line = "#{month_name} #{@year}".center(20)
+    first_line = with_year ? "#{month_name} #{@year}".center(20) : "#{month_name}".center(20)
     second_line = "Su Mo Tu We Th Fr Sa"
     output = temp.unshift(second_line).unshift(first_line)
 
@@ -64,38 +74,16 @@ class Month
     	this.rstrip!
     end
 
-    if output.size == 6 
- 			output.push("\n\n")
-    elsif output.size == 7
-    	output.push("\n")
+    if with_year
+      if output.size == 6 
+          output.push("\n\n")
+      elsif output.size == 7
+        output.push("\n")
+      else
+        output
+      end  
     else
-    	output
-    end      
+      output 
+    end  
   end
-
-	def month_year_format 
-    days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
-    day_one = days.index(self.zellers)
-    temp = " "
-
-    day_one.times do
-    	temp.prepend("   ")
-    end
-
-    temp << (1..9).to_a.join("  ")
-    temp << " "
-    temp << (10..self.days_per_month).to_a.join(" ")
-    temp = temp.scan(/.{1,21}/)
-    month_name = MONTH_NAMES[@month - 1]
-
-    first_line = "#{month_name}".center(20)
-    second_line = "Su Mo Tu We Th Fr Sa"
-    output = temp.unshift(second_line).unshift(first_line)
-
-    output.each do |this|
-      this.rstrip!
-    end
-    output       
-  end
-
 end
