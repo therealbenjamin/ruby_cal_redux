@@ -1,13 +1,13 @@
 class Month
 
-	MONTH_NAMES = %w{ January February March April May June July August September October November December } 
+	MONTH_NAMES = %w{ January February March April May June July August September October November December }
 
-	def initialize month, year 
-		@month = month 
-		@year = year 
+	def initialize month, year
+		@month = month
+		@year = year
 	end
 
-	def zellers 
+	def zellers
 	  month = @month
 	  year = @year
 	  weekdays = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
@@ -20,15 +20,15 @@ class Month
 	  weekdays[start]
 	end
 
-	def leap? 
+	def leap?
 		if @year % 400 == 0
-			true 
-		elsif @year % 100 == 0 
-			false 
-		elsif @year % 4 == 0 
-			true 
-		else 
-			false 
+			true
+		elsif @year % 100 == 0
+			false
+		elsif @year % 4 == 0
+			true
+		else
+			false
 		end
 	end
 
@@ -41,17 +41,8 @@ class Month
     end
   end
 
-  def month_head_with_year
-    month_name = MONTH_NAMES[@month - 1]
-    print "#{month_name} #{@year}".center(20)
-  end
 
-  def month_head_without_year
-    month_name = MONTH_NAMES[@month - 1]
-    print "#{month_name}"
-  end
-
-  def month_format(with_year=false)
+  def month_format with_year=false
     days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
     day_one = days.index(self.zellers)
     temp = " "
@@ -75,15 +66,15 @@ class Month
     end
 
     if with_year
-      if output.size == 6 
+      if output.size == 6
           output.push("\n\n")
       elsif output.size == 7
         output.push("\n")
       else
         output
-      end  
+      end
     else
-      output 
-    end  
+      output
+    end
   end
 end

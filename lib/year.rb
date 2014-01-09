@@ -2,9 +2,9 @@ require_relative './month'
 
 class Year
 
-	MONTH_NAMES = %w{ January February March April May June July August September October November December } 
+	MONTH_NAMES = %w{ January February March April May June July August September October November December }
 
-  attr_reader :year   
+  attr_reader :year
 
   def initialize month, year
     @year = year
@@ -12,81 +12,44 @@ class Year
 
   def year_head # Create header for year entered by user.
   	year_head = "#{@year}".center(63).rstrip + "\n"
-  	puts year_head 
+  	puts year_head
   end
 
-  def print_year # NOT final. Need to refactor to do this programatically. 
+  def print_year # NOT final. Need to refactor to do this programatically.
 
     year = @year
 
-  	# Push properly formatted month arrays into an array of the year submitted by the user. 
+  	# Push properly formatted month arrays into an array of the year submitted by the user.
   	year_array = []
   	12.times do |this|
   		temp = Month.new(this + 1, @year)
   		year_array.push(temp.month_format)
   	end
 
-    # Set variable for each month in year_array / format spacing for last 2 rows 
+    # Set variable for each month in year_array / format spacing for last 2 rows
+
+    year_array.each.with_index(1) do |month, i|
+      if i % 3 > 0
+        if month[6].nil?
+          month[6] = " " * 20
+        else
+          month[6] << (" " * (20 - month[6].length))
+        end
+        month[7] << (" " * (20 - month[7].length)) unless month[7].nil?
+      end
+    end
 
   	jan = year_array[0]
-  	space = 20 - jan[6].length 
-  	jan[6] << (" " * space)
-  	space = 20 - jan[7].length if !jan[7].nil?
-  	jan[7] << (" " * space) if !jan[7].nil? 
-
   	feb = year_array[1]
-  	
-    if feb[6].nil?
-      feb[6] = " " * 20
-    else
-      space = 20 - feb[6].length
-      feb[6] << (" " * space)
-    end
-  	space = 20 - feb[7].length if !feb[7].nil?
-  	feb[7] << (" " * space) if !feb[7].nil?
-  	
   	mar = year_array[2]
-
   	apr = year_array[3]
-  	space = 20 - apr[6].length 
-  	apr[6] << (" " * space)
-  	space = 20 - apr[7].length if !apr[7].nil?
-  	apr[7] << (" " * space) if !apr[7].nil?
-
   	may = year_array[4]
-  	space = 20 - may[6].length
-  	may[6] << (" " * space)
-  	space = 20 - may[7].length if !may[7].nil?
-  	may[7] << (" " * space) if !may[7].nil?
-
   	jun = year_array[5]
-
   	jul = year_array[6]
-  	space = 20 - jul[6].length 
-  	jul[6] << (" " * space)
-  	space = 20 - jul[7].length if !jul[7].nil?
-  	jul[7] << (" " * space) if !jul[7].nil?
-
   	aug = year_array[7]
-  	space = 20 - aug[6].length 
-  	aug[6] << (" " * space)
-  	space = 20 - aug[7].length if !aug[7].nil?
-  	aug[7] << (" " * space) if !aug[7].nil?
-
   	sep = year_array[8]
-
   	oct = year_array[9]
-  	space = 20 - oct[6].length  
-  	oct[6] << (" " * space)
-  	space = 20 - oct[7].length if !oct[7].nil?
-  	oct[7] << (" " * space) if !oct[7].nil?
-
   	nov = year_array[10]
-  	space = 20 - nov[6].length  
-  	nov[6] << (" " * space)
-  	space = 20 - nov[7].length if !nov[7].nil?
-  	nov[7] << (" " * space) if !nov[7].nil?
-
   	dec = year_array[11]
 
 
@@ -114,11 +77,11 @@ class Year
   	"#{jul[5]}  #{aug[5]}  #{sep[5]}" + "\n" + "#{jul[6]}  #{aug[6]}  #{sep[6]}" + "\n" +
   	"#{jul[7] or '                    '}  #{aug[7] or '                    '}  #{sep[7]}" + "\n" +
 
-    #Print October-December  
+    #Print October-December
   	"#{'October'.center(20)}  #{'November'.center(20)}  #{' ' * 6 + 'December'}" + "\n" +
   	"#{oct[1]}  #{oct[1]}  #{oct[1]}" + "\n" + "#{oct[2]}  #{nov[2]}  #{dec[2]}" + "\n" +
   	"#{oct[3]}  #{nov[3]}  #{dec[3]}" + "\n" + "#{oct[4]}  #{nov[4]}  #{dec[4]}" + "\n" +
   	"#{oct[5]}  #{nov[5]}  #{dec[5]}" + "\n" + "#{oct[6]}  #{nov[6]}  #{dec[6]}" + "\n" +
   	"#{oct[7] or '                    '}  #{nov[7] or '                    '}  #{dec[7]}" + "\n"
-	end 
+	end
 end
