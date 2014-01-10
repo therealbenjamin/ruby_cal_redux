@@ -45,21 +45,21 @@ class Month
   def month_format with_year=false
     days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
     day_one = days.index(self.zellers)
-    temp = " "
+    output = " "
 
     day_one.times do
-    	temp.prepend("   ")
+    	output.prepend("   ")
         end
 
-    temp << (1..9).to_a.join("  ")
-    temp << " "
-    temp << (10..self.days_per_month).to_a.join(" ")
-    temp = temp.scan(/.{1,21}/)
+    output << (1..9).to_a.join("  ")
+    output << " "
+    output << (10..self.days_per_month).to_a.join(" ")
+    output = output.scan(/.{1,21}/)
     month_name = MONTH_NAMES[@month - 1]
 
     first_line = with_year ? "#{month_name} #{@year}".center(20) : "#{month_name}".center(20)
     second_line = "Su Mo Tu We Th Fr Sa"
-    output = temp.unshift(second_line).unshift(first_line)
+    output = output.unshift(second_line).unshift(first_line)
 
     output.each do |this|
     	this.rstrip!
