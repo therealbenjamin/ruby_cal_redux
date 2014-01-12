@@ -25,8 +25,6 @@ class Year
   		year_array.push(temp.month_format)
   	end
 
-    # Set variable for each month in year_array / format spacing for last 2 rows
-
     year_array.each.with_index(1) do |month, i|
       if i % 3 > 0
         if month[6].nil?
